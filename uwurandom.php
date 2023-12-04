@@ -8,14 +8,13 @@
 // 
 
 
-class uwurandom {
+class uwurandom
+{
 
-    const version = 0.0.1;
+    const version = "0.0.1";
 
-    function generate($maxlen){
-        // x Characters
-        $maxlen = $maxlen;
-
+    function generate($maxlen)
+    {
         // How many characters so far
         $currentlen = 0;
 
@@ -69,31 +68,38 @@ class uwurandom {
             "ya"
         ];
 
-        function uwu_nonsense($length){
+        function uwu_nonsense($length)
+        {
             $out = [];
-            for ($x = 0; $x <= $length / 2; $x++){
+            for ($x = 0; $x <= $length / 2; $x++) {
                 $rand = mt_rand(0, sizeof($GLOBALS["nonsense"]) - 1);
                 $out[] = $GLOBALS["nonsense"][$rand];
             }
             return str_replace(" ", "", implode(" ", $out));
         }
 
-        function uwu_nya($length){
+        function uwu_nya($length)
+        {
             return "ny" . str_repeat("a", $length);
         }
 
-        function uwu_blush($length){
+        function uwu_blush($length)
+        {
             return ">" . str_repeat("/", $length) . "<";
         }
 
-        function uwu_action($rand){
-            if ($rand == 12){$rand = 11;}
+        function uwu_action($rand)
+        {
+            if ($rand == 12) {
+                $rand = 11;
+            }
             return $GLOBALS["actions"][$rand];
         }
 
-        function uwu_keysmash($length){
+        function uwu_keysmash($length)
+        {
             $out = [];
-            for ($x = 0; $x <= $length; $x++){
+            for ($x = 0; $x <= $length; $x++) {
                 $randomAsciiValue = rand(65, 90); // ASCII values for uppercase letters A-Z
                 $randomLetter = chr($randomAsciiValue);
                 $out[] = strtolower($randomLetter);
@@ -101,26 +107,29 @@ class uwurandom {
             return str_replace(" ", "", implode(" ", $out));
         }
 
-        function uwu_scrunkly($length){
+        function uwu_scrunkly($length)
+        {
             return "aw " . uwu_keysmash($length - 3);
         }
 
-        while (true){
+        while (true) {
             $random = mt_rand(0, 10);
 
             // Dont repeat the same thing twice
-            if ($last == $random){continue;}
+            if ($last == $random) {
+                continue;
+            }
 
-            if ($random == 0){
+            if ($random == 0) {
                 $str = "uwu";
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 1){
+            } elseif ($random == 1) {
                 // nonsense
                 $str = uwu_nonsense(mt_rand(5, 25));
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 2){
+            } elseif ($random == 2) {
                 // nyaaa~
                 $str = uwu_nya(mt_rand(3, 6));
                 $out[] = $str;
@@ -130,41 +139,42 @@ class uwurandom {
                 $str = uwu_blush(mt_rand(3, 5));
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 4){
+            } elseif ($random == 4) {
                 // :3
                 $str = ":3";
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 5){
+            } elseif ($random == 5) {
                 // Actions
-                $str = uwu_action(mt_rand(0, sizeof($actions)));
+                $str = uwu_action(mt_rand(0, sizeof($GLOBALS["actions"])));
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 6){
+            } elseif ($random == 6) {
                 // Keysmash;
                 $str = uwu_keysmash(mt_rand(5, 25));
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 7){
+            } elseif ($random == 7) {
                 // screaming
                 $str = str_repeat("A", mt_rand(3, 5));
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 8){
+            } elseif ($random == 8) {
                 // aww the scrunkly
                 $str = uwu_scrunkly(mt_rand(5, 25));
                 $out[] = $str;
                 $currentlen += strlen($str);
-            } elseif ($random == 9){
+            } elseif ($random == 9) {
                 // owo
                 $out[] = "owo";
                 $currentlen += strlen("owo");
             }
-            if ($currentlen >= $maxlen){break;}
+            if ($currentlen >= $maxlen) {
+                break;
+            }
             $last = $random;
         }
 
         return implode($out);
     }
 }
-?>
