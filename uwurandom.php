@@ -161,6 +161,7 @@ class uwurandom {
                 $currentlen += strlen("owo");
             }
             if ($currentlen >= $maxlen){break;}
+            $last = $random;
         }
 
         return implode($out);
