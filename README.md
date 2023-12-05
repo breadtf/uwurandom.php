@@ -4,6 +4,8 @@ the best php library ever :3
 
 ### installation and usage and stuff
 
+composer package coming soon probably
+
 download uwurandom.php and put it in a library folder, like `lib`
 
 then copy this code into ur php file
