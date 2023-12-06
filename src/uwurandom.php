@@ -176,6 +176,6 @@ class uwurandom
             $last = $random;
         }
 
-        return implode($out);
+        return implode(" ", $out);
     }
 }
