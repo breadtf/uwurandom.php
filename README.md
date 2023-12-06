@@ -18,7 +18,7 @@ then copy this code here into whatever it is you need this for
 ```
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . 'vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 
 $uwurandom = new Breadtf\Uwurandom\uwurandom();
 
