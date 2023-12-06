@@ -16,6 +16,5 @@
             "email": "breadteleporter@proton.me"
         }
     ],
-    "require": {},
-    "minimum-stability": "dev"| "alpha"| "beta"| "RC"|"stable"
+    "require": {}
 }
