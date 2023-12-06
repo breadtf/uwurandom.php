@@ -11,7 +11,7 @@ so if for some reason you need that, uhhh, good luck i guess
 
 i created a composer package for this so all you need to do is run
 
-`composer require breadtf/uwurandom`
+`# composer require breadtf/uwurandom`
 
 then copy this code here into whatever it is you need this for
 
