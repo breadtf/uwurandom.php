@@ -7,6 +7,7 @@
 // https://github.com/breadteleporter/uwurandom.php
 // 
 
+namespace Breadtf\Uwurandom;
 
 class uwurandom
 {

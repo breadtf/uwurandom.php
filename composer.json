@@ -1,0 +1,20 @@
+{
+    "name": "breadtf/uwurandom",
+    "description": "UwURandom remade in php :3333",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Breadtf\\Uwurandom\\": "src/"
+        },
+        "files": [
+            "src/uwurandom.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "BreadTeleporter",
+            "email": "breadteleporter@proton.me"
+        }
+    ],
+    "require": {}
+}
