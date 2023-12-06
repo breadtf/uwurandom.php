@@ -2,6 +2,11 @@
 
 the best php library ever :3
 
+### semi important note
+
+uwurandom.php doesnt use cryptographically secure random numbers (cuz too lazy, feel free to add)
+so if for some reason you need that, uhhh, good luck i guess
+
 ### installation and usage and stuff
 
 composer package coming soon probably
