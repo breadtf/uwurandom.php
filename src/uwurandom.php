@@ -12,18 +12,54 @@ namespace Breadtf\Uwurandom;
 class uwurandom
 {
 
-    const version = "1.0.1";
+    const version = "1.1.0";
 
-    function generate($maxlen)
+    public function uwu_nonsense($length)
     {
-        // How many characters so far
-        $currentlen = 0;
-
-        // Output string
         $out = [];
+        for ($x = 0; $x <= $length / 2; $x++) {
+            $rand = mt_rand(0, sizeof($GLOBALS["nonsense"]) - 1);
+            $out[] = $GLOBALS["nonsense"][$rand];
+        }
+        return str_replace(" ", "", implode(" ", $out));
+    }
 
-        // Last selection
-        $last = -1;
+    public function uwu_nya($length)
+    {
+        return "ny" . str_repeat("a", $length);
+    }
+
+    public function uwu_blush($length)
+    {
+        return ">" . str_repeat("/", $length) . "<";
+    }
+
+    public function uwu_action($rand)
+    {
+        if ($rand == 12) {
+            $rand = 11;
+        }
+        return $GLOBALS["actions"][$rand];
+    }
+
+    public function uwu_keysmash($length)
+    {
+        $out = [];
+        for ($x = 0; $x <= $length; $x++) {
+            $randomAsciiValue = rand(65, 90); // ASCII values for uppercase letters A-Z
+            $randomLetter = chr($randomAsciiValue);
+            $out[] = strtolower($randomLetter);
+        }
+        return str_replace(" ", "", implode(" ", $out));
+    }
+
+    public function uwu_scrunkly($length)
+    {
+        return "aw " . $this->uwu_keysmash($length - 3);
+    }
+
+    public function generate($maxlen, $softlimit=false)
+    {
 
         $GLOBALS["actions"] = [
             "*tilts head*",
@@ -39,7 +75,7 @@ class uwurandom
             "*eats all ur doritos*",
             "*lies down on a random surface*"
         ];
-
+    
         $GLOBALS["nonsense"] = [
             "aa",
             "am",
@@ -69,49 +105,14 @@ class uwurandom
             "ya"
         ];
 
-        function uwu_nonsense($length)
-        {
-            $out = [];
-            for ($x = 0; $x <= $length / 2; $x++) {
-                $rand = mt_rand(0, sizeof($GLOBALS["nonsense"]) - 1);
-                $out[] = $GLOBALS["nonsense"][$rand];
-            }
-            return str_replace(" ", "", implode(" ", $out));
-        }
+        // How many characters so far
+        $currentlen = 0;
 
-        function uwu_nya($length)
-        {
-            return "ny" . str_repeat("a", $length);
-        }
+        // Output string
+        $out = [];
 
-        function uwu_blush($length)
-        {
-            return ">" . str_repeat("/", $length) . "<";
-        }
-
-        function uwu_action($rand)
-        {
-            if ($rand == 12) {
-                $rand = 11;
-            }
-            return $GLOBALS["actions"][$rand];
-        }
-
-        function uwu_keysmash($length)
-        {
-            $out = [];
-            for ($x = 0; $x <= $length; $x++) {
-                $randomAsciiValue = rand(65, 90); // ASCII values for uppercase letters A-Z
-                $randomLetter = chr($randomAsciiValue);
-                $out[] = strtolower($randomLetter);
-            }
-            return str_replace(" ", "", implode(" ", $out));
-        }
-
-        function uwu_scrunkly($length)
-        {
-            return "aw " . uwu_keysmash($length - 3);
-        }
+        // Last selection
+        $last = -1;
 
         while (true) {
             $random = mt_rand(0, 10);
@@ -127,17 +128,17 @@ class uwurandom
                 $currentlen += strlen($str);
             } elseif ($random == 1) {
                 // nonsense
-                $str = uwu_nonsense(mt_rand(5, 25));
+                $str = $this->uwu_nonsense(mt_rand(5, 25));
                 $out[] = $str;
                 $currentlen += strlen($str);
             } elseif ($random == 2) {
                 // nyaaa~
-                $str = uwu_nya(mt_rand(3, 6));
+                $str = $this->uwu_nya(mt_rand(3, 6));
                 $out[] = $str;
                 $currentlen += strlen($str);
             } elseif ($random == 3) {
                 // >///<
-                $str = uwu_blush(mt_rand(3, 5));
+                $str = $this->uwu_blush(mt_rand(3, 5));
                 $out[] = $str;
                 $currentlen += strlen($str);
             } elseif ($random == 4) {
@@ -147,12 +148,12 @@ class uwurandom
                 $currentlen += strlen($str);
             } elseif ($random == 5) {
                 // Actions
-                $str = uwu_action(mt_rand(0, sizeof($GLOBALS["actions"])));
+                $str = $this->uwu_action(mt_rand(0, sizeof($GLOBALS["actions"])));
                 $out[] = $str;
                 $currentlen += strlen($str);
             } elseif ($random == 6) {
                 // Keysmash;
-                $str = uwu_keysmash(mt_rand(5, 25));
+                $str = $this->uwu_keysmash(mt_rand(5, 25));
                 $out[] = $str;
                 $currentlen += strlen($str);
             } elseif ($random == 7) {
@@ -162,7 +163,7 @@ class uwurandom
                 $currentlen += strlen($str);
             } elseif ($random == 8) {
                 // aww the scrunkly
-                $str = uwu_scrunkly(mt_rand(5, 25));
+                $str = $this->uwu_scrunkly(mt_rand(5, 25));
                 $out[] = $str;
                 $currentlen += strlen($str);
             } elseif ($random == 9) {
@@ -176,6 +177,10 @@ class uwurandom
             $last = $random;
         }
 
-        return implode(" ", $out);
+        if ($softlimit == false){
+            return substr(implode(" ", $out), 0, $maxlen);
+        } else {
+            return implode(" ", $out);
+        }
     }
 }

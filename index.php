@@ -6,6 +6,12 @@ $uwurandom = new Breadtf\Uwurandom\uwurandom();
 
 $uwu = $uwurandom -> generate(500);
 
-echo $uwu;
+echo "\n\n" . $uwu . "\n\n";
+echo strlen($uwu);
 
+
+$uwusoftmax = $uwurandom -> generate(500, true);
+
+echo "\n\n" . $uwusoftmax . "\n\n";
+echo strlen($uwusoftmax);
 ?>
