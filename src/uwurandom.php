@@ -12,9 +12,9 @@ namespace Breadtf\Uwurandom;
 class uwurandom
 {
 
-    const version = "1.1.0";
+    public const version = "1.1.0";
 
-    public function uwu_nonsense($length)
+    private function uwu_nonsense($length)
     {
         $out = [];
         for ($x = 0; $x <= $length / 2; $x++) {
@@ -24,17 +24,17 @@ class uwurandom
         return str_replace(" ", "", implode(" ", $out));
     }
 
-    public function uwu_nya($length)
+    private function uwu_nya($length)
     {
         return "ny" . str_repeat("a", $length);
     }
 
-    public function uwu_blush($length)
+    private function uwu_blush($length)
     {
         return ">" . str_repeat("/", $length) . "<";
     }
 
-    public function uwu_action($rand)
+    private function uwu_action($rand)
     {
         if ($rand == 12) {
             $rand = 11;
@@ -42,7 +42,7 @@ class uwurandom
         return $GLOBALS["actions"][$rand];
     }
 
-    public function uwu_keysmash($length)
+    private function uwu_keysmash($length)
     {
         $out = [];
         for ($x = 0; $x <= $length; $x++) {
@@ -53,7 +53,7 @@ class uwurandom
         return str_replace(" ", "", implode(" ", $out));
     }
 
-    public function uwu_scrunkly($length)
+    private function uwu_scrunkly($length)
     {
         return "aw " . $this->uwu_keysmash($length - 3);
     }
